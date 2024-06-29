@@ -1,0 +1,45 @@
+New-AzResourceGroup -Name 'siddhi-rg' -Location 'EastUS'
+
+
+New-AzVm `
+    -ResourceGroupName 'siddhi-rg' `
+    -Name 'shiv-vm' `
+    -Location 'EastUS' `
+    -Image 'MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition:latest' `
+    -VirtualNetworkName 'myVnet' `
+    -SubnetName 'mySubnet' `
+    -SecurityGroupName 'myNetworkSecurityGroup' `
+    -PublicIpAddressName 'myPublicIpAddress' `
+    -OpenPorts 80,3389
+
+Invoke-AzVMRunCommand -ResourceGroupName 'siddhi-rg' -VMName 'shiv-vm' -CommandId 'RunPowerShellScript' -ScriptString 'Install-WindowsFeature -Name We
+
+
+b-Server -IncludeManagementTools'
+
+
+
+
+New-AzResourceGroup -Name 'shivani-rg' -Location 'EastUS'
+
+
+
+
+New-AzVm `
+    -ResourceGroupName 'shivani-rg' `
+    -Name 'shiavni-VM' `
+    -Location 'EastUS' `
+    -Image 'MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition:latest' `
+    -VirtualNetworkName 'shivaniVnet' `
+    -SubnetName 'shivaniSubnet' `
+    -SecurityGroupName 'shivaniNetworkSecurityGroup' `
+    -PublicIpAddressName 'shivaniPublicIpAddress' `
+    -OpenPorts 80,3389
+
+
+Invoke-AzVMRunCommand -ResourceGroupName 'shivani-rg' -VMName 'shiavni-VM' -CommandId 'RunPowerShellScript' -ScriptString 'Install-WindowsFeature -Name Web-Server -IncludeManagementTools'
+
+
+
+
+
